@@ -1,32 +1,55 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList } from "react-native"
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native"
 import { FontAwesome } from '@expo/vector-icons';
 import globalStyles from '../styles/globalStyles';
-export default function Movie({ movieDescription }) {
-
+export default function Movie({ movieDescription, showReview }) {
     return (
-        <View style={styles.movieContainer}>
-            <Image
-                style={styles.image}
-                source={{
-                    uri: movieDescription.uri
-                }}
-            />
-            <View style={styles.movieDetialsContainer}>
-                <View style={{ justifyContent: "space-between" }}>
-                    <Text style={globalStyles.text}>{movieDescription.title}</Text>
-                </View>
-
-                <View style={styles.rating}>
-                    <View style={{ flexDirection: "row" }}>
-                        {
-                            Array.from({ length: movieDescription.rating }).map((item, index) => (<FontAwesome name="star" size={30} color="white" />))
-                        }
+        <TouchableOpacity onPress={() => showReview(movieDescription)}>
+            <View style={styles.movieContainer}>
+                <Image
+                    style={styles.image}
+                    source={{
+                        uri: movieDescription.uri
+                    }}
+                />
+                <View style={styles.movieDetialsContainer}>
+                    <View style={{ justifyContent: "space-between" }}>
+                        <Text style={globalStyles.text}>{movieDescription.title}</Text>
                     </View>
-                    <Text style={globalStyles.text}>{movieDescription.producer}</Text>
+
+                    <View style={styles.rating}>
+                        <View style={{ flexDirection: "row" }}>
+                            {
+                                Array.from({ length: movieDescription.rating }).map((item, index) => (<FontAwesome name="star" size={30} color="white" key={index} />))
+                            }
+                        </View>
+                        <Text style={globalStyles.text}>{movieDescription.producer}</Text>
+                    </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
+        // <View style={styles.movieContainer}>
+        //     <Image
+        //         style={styles.image}
+        //         source={{
+        //             uri: movieDescription.uri
+        //         }}
+        //     />
+        //     <View style={styles.movieDetialsContainer}>
+        //         <View style={{ justifyContent: "space-between" }}>
+        //             <Text style={globalStyles.text}>{movieDescription.title}</Text>
+        //         </View>
+
+        //         <View style={styles.rating}>
+        //             <View style={{ flexDirection: "row" }}>
+        //                 {
+        //                     Array.from({ length: movieDescription.rating }).map((item, index) => (<FontAwesome name="star" size={30} color="white" key={index} />))
+        //                 }
+        //             </View>
+        //             <Text style={globalStyles.text}>{movieDescription.producer}</Text>
+        //         </View>
+        //     </View>
+        // </View>
     )
 }
 

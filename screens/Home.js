@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import Movie from "../component/Movie";
 import globalStyles from "../styles/globalStyles";
 import movies from "../assets/movieData.json"
@@ -13,10 +13,12 @@ export default function Home({ navigation }) {
         <View style={globalStyles.container}>
             <FlatList
                 data={movies}
-                renderItem={({ item }) => (<Movie movieDescription={item} />)}
+                renderItem={({ item }) => (<Movie
+                    movieDescription={item}
+                    showReview={movieReview => navigation.navigate("ReviewDetails", movieReview)}
+                />)}
+
             />
-            {/* <Movie movies={movies} /> */}
-            {/* <Button title="Review page" onPress={() => navigation .navigate("ReviewDetails")} /> */}
         </View>
     )
 }

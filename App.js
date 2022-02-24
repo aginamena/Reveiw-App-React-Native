@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from 'react-native';
 import Home from "./screens/Home";
 import * as Font from 'expo-font';
-import Navigator from "./routes/homeStack"
+import Navigator from "./routes/drawer"
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
