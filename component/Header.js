@@ -9,7 +9,7 @@ export default function Header({ navigation }) {
                 size={30} color="black"
                 style={styles.menu}
                 onPress={() => navigation.openDrawer()} />
-            <Text style={styles.heading}>Testing</Text>
+            <Text style={styles.heading}>Home</Text>
         </View>
     )
 }
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     },
     menu: {
         position: "absolute",
-        left: 16
+        left: 0
     }
 })
